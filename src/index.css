@@ -1,0 +1,143 @@
+/* ============================================================
+   INVESTOR SATHI CRM — Global Styles
+   This file sets up Tailwind CSS and custom global styles
+   ============================================================ */
+
+/* Tailwind's three layers - REQUIRED for Tailwind to work */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- BASE STYLES ---- */
+@layer base {
+  /* Apply Inter font to everything */
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  /* Smooth scrolling */
+  * {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+  }
+  
+  /* Light mode background */
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+  
+  /* Dark mode background */
+  .dark body {
+    @apply bg-gray-950 text-gray-100;
+  }
+}
+
+/* ---- COMPONENT STYLES ---- */
+/* Reusable classes using Tailwind's @apply */
+@layer components {
+  /* Card component */
+  .card {
+    @apply bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm;
+  }
+  
+  /* Primary button */
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium px-4 py-2 rounded-lg 
+           transition-colors duration-200 flex items-center gap-2 disabled:opacity-50 
+           disabled:cursor-not-allowed;
+  }
+  
+  /* Secondary button */
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 
+           text-gray-700 dark:text-gray-200 font-medium px-4 py-2 rounded-lg 
+           transition-colors duration-200 flex items-center gap-2;
+  }
+  
+  /* Input field */
+  .input-field {
+    @apply w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 
+           dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 
+           placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 
+           focus:border-transparent transition-colors duration-200;
+  }
+  
+  /* Label */
+  .input-label {
+    @apply block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1;
+  }
+  
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  /* Status badges */
+  .badge-lead      { @apply badge bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300; }
+  .badge-onboarded { @apply badge bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300; }
+  .badge-payment   { @apply badge bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300; }
+  .badge-completed { @apply badge bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300; }
+  .badge-pending   { @apply badge bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300; }
+  .badge-paid      { @apply badge bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300; }
+  .badge-overdue   { @apply badge bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300; }
+  
+  /* Page title */
+  .page-title {
+    @apply text-2xl font-bold text-gray-900 dark:text-white;
+  }
+  
+  /* Section divider */
+  .divider {
+    @apply border-t border-gray-200 dark:border-gray-800;
+  }
+  
+  /* Stat card */
+  .stat-card {
+    @apply card p-6;
+  }
+}
+
+/* ---- UTILITY STYLES ---- */
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent;
+  }
+}
+
+/* ---- CUSTOM ANIMATIONS ---- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ---- MULTI-STEP FORM PROGRESS ---- */
+.step-connector {
+  height: 2px;
+  flex: 1;
+  transition: background-color 0.3s ease;
+}
